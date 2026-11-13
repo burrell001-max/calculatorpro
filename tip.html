@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><title>Tip Calculator | CalculatorPro</title></head><body>
+<div class="top"><div class="w"><a class="logo" href="index.html">Calculator<span>Pro</span></a><nav><a href="index.html">FINANCIAL</a><a href="fitness-and-health.html">FITNESS &amp; HEALTH</a><a href="math-calculator.html">MATH</a><a class="on" href="other-calculator.html">OTHER</a></nav></div></div><div class="w"><div class="crumb"><a href="index.html">home</a> / <a href="other-calculator.html">other</a> / tip calculator</div>
+<h1>Tip Calculator</h1><div class="cols"><div>
+<div class="banner">Modify the values and click Calculate to use</div>
+<div class="calc"><div class="panel">
+<div class="r"><label for="b">Bill amount</label><input class="s2" id="b" value="85.50"></div>
+<div class="r"><label for="t">Tip</label><input id="t" value="18"><span>%</span></div>
+<div class="r"><label for="p">Split between</label><input id="p" value="2"><span>people</span></div>
+<button class="go" id="go">Calculate</button></div>
+<div><div class="pay" id="out"></div>
+<table class="cat"><tbody id="rs"></tbody></table></div></div>
+<p class="note">Check your bill for a service charge before adding a tip.</p>
+</div><aside class="side"><h3>Other Calculators</h3><div><a href="#">Age</a><a href="#">Date</a><a href="#">Time</a><a href="#">Hours</a><a href="#">GPA</a><a href="#">Grade</a><a href="#">Height</a><a href="#">Concrete</a><a href="tip.html">Tip</a><a href="#">Password Generator</a></div></aside></div></div><footer>about us | sitemap | terms of use | privacy policy &nbsp; &copy; 2026 CalculatorPro</footer>
+<script>
+const $=i=>document.getElementById(i),n=i=>Math.max(0,parseFloat($(i).value)||0),m=x=>"$"+x.toFixed(2);
+function calc(){const b=n("b"),t=b*n("t")/100,p=Math.max(1,Math.round(n("p")));
+$("out").textContent="Total: "+m(b+t);
+$("rs").innerHTML=[["Tip amount",t],["Total with tip",b+t],["Tip per person",t/p],["Total per person",(b+t)/p]].map(x=>"<tr><td>"+x[0]+"</td><td>"+m(x[1])+"</td></tr>").join("")}
+$("go").onclick=calc;document.querySelectorAll("input").forEach(e=>e.oninput=calc);calc();
+</script></body></html>
