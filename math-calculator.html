@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><title>Math Calculators | CalculatorPro</title>
+<style>
+.m{display:flex;gap:24px;flex-wrap:wrap}.m>div:first-child{flex:1;min-width:260px}
+.lists{display:block;font-size:19px;margin-top:6px}.lists h2{margin-top:14px}
+.kp{width:440px;max-width:100%;border:2px solid #000;padding:10px;background:#fff;align-self:flex-start}
+.ds{background:#336699;color:#fff;text-align:right;font-size:26px;padding:8px 10px;height:48px;overflow:hidden;margin-bottom:8px}
+.g{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.g button{padding:12px 0;font-size:18px;font-weight:700;border:1px solid #6d8fb5;border-radius:3px;cursor:pointer;background:#e8eef7;color:#000}
+.g button.d{background:#7ea4d2}.g button:active{background:#336699;color:#fff}
+</style></head><body>
+<div class="top"><div class="w"><a class="logo" href="index.html">Calculator<span>Pro</span></a><nav><a href="index.html">FINANCIAL</a><a href="fitness-and-health.html">FITNESS &amp; HEALTH</a><a class="on" href="math-calculator.html">MATH</a><a href="#">OTHER</a></nav></div></div>
+<div class="w"><div class="crumb"><a href="index.html">home</a> / math</div>
+<h1>Math Calculators</h1><div class="cols"><div>
+<div class="m"><div><p>Use the basic math calculator to do simple calculations or use one of the following calculators.</p>
+<div class="lists"><ul>
+<li class=soon>Scientific Calculator<small>coming soon</small></li>
+<li class=soon>Fraction Calculator<small>coming soon</small></li>
+<li class=soon>Percentage Calculator<small>coming soon</small></li>
+<li class=soon>Random Number Generator Calculator<small>coming soon</small></li>
+<li class=soon>Percent Error Calculator<small>coming soon</small></li>
+<li class=soon>Exponent Calculator<small>coming soon</small></li>
+<li class=soon>Binary Calculator<small>coming soon</small></li>
+<li class=soon>Hex Calculator<small>coming soon</small></li>
+<li class=soon>Half-Life Calculator<small>coming soon</small></li>
+<li class=soon>Quadratic Formula Calculator<small>coming soon</small></li>
+<li class=soon>Log Calculator<small>coming soon</small></li>
+<li class=soon>Ratio Calculator<small>coming soon</small></li>
+<li class=soon>Root Calculator<small>coming soon</small></li>
+<li class=soon>Least Common Multiple Calculator<small>coming soon</small></li>
+<li class=soon>Greatest Common Factor Calculator<small>coming soon</small></li>
+<li class=soon>Factor Calculator<small>coming soon</small></li>
+<li class=soon>Rounding Calculator<small>coming soon</small></li>
+<li class=soon>Matrix Calculator<small>coming soon</small></li>
+<li class=soon>Scientific Notation Calculator<small>coming soon</small></li>
+<li class=soon>Big Number Calculator<small>coming soon</small></li>
+</ul></div></div>
+<div class="kp" aria-label="Basic calculator"><div class="ds" id="ds">0</div><div class="g" id="g"></div></div></div>
+<div class="lists"><h2>Statistics</h2><ul>
+<li class=soon>Standard Deviation Calculator<small>coming soon</small></li>
+<li class=soon>Number Sequence Calculator<small>coming soon</small></li>
+<li class=soon>Sample Size Calculator<small>coming soon</small></li>
+<li class=soon>Probability Calculator<small>coming soon</small></li>
+<li class=soon>Statistics Calculator<small>coming soon</small></li>
+<li class=soon>Mean, Median, Mode, Range Calculator<small>coming soon</small></li>
+<li class=soon>Permutation and Combination Calculator<small>coming soon</small></li>
+<li class=soon>Z-score Calculator<small>coming soon</small></li>
+<li class=soon>Confidence Interval Calculator<small>coming soon</small></li>
+</ul><h2>Geometry</h2><ul>
+<li class=soon>Triangle Calculator<small>coming soon</small></li>
+<li class=soon>Volume Calculator<small>coming soon</small></li>
+<li class=soon>Slope Calculator<small>coming soon</small></li>
+<li class=soon>Area Calculator<small>coming soon</small></li>
+<li class=soon>Distance Calculator<small>coming soon</small></li>
+<li class=soon>Circle Calculator<small>coming soon</small></li>
+<li class=soon>Surface Area Calculator<small>coming soon</small></li>
+<li class=soon>Pythagorean Theorem Calculator<small>coming soon</small></li>
+<li class=soon>Right Triangle Calculator<small>coming soon</small></li>
+</ul></div></div>
+<aside class="side"><h3>Math Calculators</h3><div><a href="#">Scientific</a><a href="#">Fraction</a><a href="#">Percentage</a><a href="#">Triangle</a><a href="#">Volume</a><a href="#">Standard Deviation</a><a href="#">Random Number Generator</a></div></aside>
+</div></div>
+<footer>about us | sitemap | terms of use | privacy policy &nbsp; &copy; 2026 CalculatorPro</footer>
+<script>
+const K=[["7","d"],["8","d"],["9","d"],["+"],["Back"],["4","d"],["5","d"],["6","d"],["−"],["Ans"],["1","d"],["2","d"],["3","d"],["×"],["M+"],["0","d"],[".","d"],["EXP"],["÷"],["M-"],["±"],["RND"],["AC"],["="],["MR"]];
+let cur="0",prev=null,op=null,ans=0,mem=0,fresh=false;
+const fmt=r=>isFinite(r)?String(parseFloat(r.toPrecision(12))):"Error";
+const val=()=>parseFloat(cur)||0;
+const ap=(a,o,b)=>o=="+"?a+b:o=="−"?a-b:o=="×"?a*b:b==0?NaN:a/b;
+const show=()=>document.getElementById("ds").textContent=cur;
+function press(k){
+ if(cur=="Error"&&k!="AC"){return}
+ if(/^[0-9.]$/.test(k)){if(fresh){cur="0";fresh=false}
+  if(k=="."&&cur.includes(".")&&!cur.includes("e"))return;cur=(cur=="0"&&k!=".")?k:cur+k}
+ else if("+−×÷".includes(k)){if(op&&!fresh){prev=ap(prev,op,val());cur=fmt(prev)}else prev=val();op=k;fresh=true}
+ else if(k=="="){if(op){const r=ap(prev,op,val());cur=fmt(r);ans=isFinite(r)?r:0;op=null;prev=null;fresh=true}}
+ else if(k=="AC"){cur="0";prev=null;op=null;fresh=false}
+ else if(k=="Back"){cur=cur.length>1&&!fresh?cur.slice(0,-1):"0";if(cur=="-")cur="0"}
+ else if(k=="±"){cur=cur.startsWith("-")?cur.slice(1):(cur=="0"?cur:"-"+cur)}
+ else if(k=="Ans"){cur=fmt(ans);fresh=false}
+ else if(k=="RND"){cur=fmt(Math.random());fresh=false}
+ else if(k=="EXP"){if(!cur.includes("e")){cur+="e";fresh=false}}
+ else if(k=="M+")mem+=val();else if(k=="M-")mem-=val();else if(k=="MR"){cur=fmt(mem);fresh=false}
+ show()}
+const g=document.getElementById("g");
+K.forEach(([k,c])=>{const b=document.createElement("button");b.textContent=k;if(c)b.className=c;b.onclick=()=>press(k);g.appendChild(b)});
+</script></body></html>
