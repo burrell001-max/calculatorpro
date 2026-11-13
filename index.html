@@ -127,7 +127,7 @@ const m=S.length,an=(id)=>!inc?0:$(id+"U").value=="%"?P*v(id)/100:v(id);
 const it=[["Mortgage Payment",pi+ex,cp,"#2a7de1"],["Property Tax",an("tax")/12,0,"#8bb920"],["Home Insurance",an("ins")/12,0,"#8b0000"],["PMI",an("pmi")/12,0,"#f08a24"],["HOA Fee",an("hoa")/12,0,"#8e5bb5"],["Other Costs",an("oth")/12,0,"#20b2d4"]];
 it.forEach((x,j)=>{if(j)x[2]=x[1]*m});
 const tm=it.reduce((a,x)=>a+x[1],0),tt=it.reduce((a,x)=>a+x[2],0);
-$("mp").textContent=f2(tm);
+$("mp").textContent=f2(pi+ex);
 $("rows").innerHTML=it.map((x,j)=>`<tr${j?"":' class="g"'}><td>${x[0]}</td><td>${f2(x[1])}</td><td>${f2(x[2])}</td></tr>`).join("")+`<tr class="g"><td>Total Out-of-Pocket</td><td>${f2(tm)}</td><td>${f2(tt)}</td></tr>`;
 const sh=it.filter(x=>x[1]>0);let a=-Math.PI/2,s="";
 sh.forEach(x=>{const q=x[1]/tm,e=a+q*2*Math.PI,c=85,R=82,ri=42,T=(g,t)=>[c+g*Math.cos(t),c+g*Math.sin(t)];
